@@ -1,0 +1,9 @@
+window.addEventListener("load", function() {
+  // Aguarde o tempo do preloader/efeito Matrix antes de revelar o conteúdo
+  setTimeout(function() {
+    document.querySelector(".site-content").classList.add("visible");
+    // (Opcional) Remova o preloader se ainda não tiver sido removido
+    var preloader = document.querySelector(".preloader");
+    if (preloader) preloader.style.display = "none";
+  }, 1500); // Ajuste o tempo conforme a duração do seu preloader/matrix
+});

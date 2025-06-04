@@ -1052,3 +1052,8 @@ img {
 .mb-50 {
   margin-bottom: 50px;
 }
+
+.site-content {
+  position: relative;
+  z-index: 2;
+}

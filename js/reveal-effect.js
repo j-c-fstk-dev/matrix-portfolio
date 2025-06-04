@@ -1,0 +1,36 @@
+const revealCanvas = document.getElementById('reveal-effect');
+const revealCtx = revealCanvas.getContext('2d');
+
+function resizeRevealCanvas() {
+  revealCanvas.width = window.innerWidth;
+  revealCanvas.height = window.innerHeight;
+}
+resizeRevealCanvas();
+window.addEventListener('resize', resizeRevealCanvas);
+
+let mouse = { x: -1000, y: -1000 };
+
+document.addEventListener('mousemove', (e) => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+function drawReveal() {
+  // Limpa o canvas
+  revealCtx.clearRect(0, 0, revealCanvas.width, revealCanvas.height);
+
+  // Camada escura cobrindo toda a tela
+  revealCtx.fillStyle = 'rgba(10,14,23,0.6)'; // Diminua o alpha para suavizar o efeito!
+  revealCtx.fillRect(0, 0, revealCanvas.width, revealCanvas.height);
+
+  // Cria um buraco circular transparente ao redor do mouse (revelando o fundo)
+  revealCtx.save();
+  revealCtx.globalCompositeOperation = 'destination-out';
+  revealCtx.beginPath();
+  revealCtx.arc(mouse.x, mouse.y, 100, 0, 2 * Math.PI);
+  revealCtx.fill();
+  revealCtx.restore();
+
+  requestAnimationFrame(drawReveal);
+}
+drawReveal();

@@ -1,0 +1,16 @@
+.site-content {
+  opacity: 0;
+  filter: blur(16px);
+  transform: translateY(64px) scale(0.98);
+  transition:
+    opacity 2s cubic-bezier(.4,0,.2,1),
+    filter 2s cubic-bezier(.4,0,.2,1),
+    transform 2s cubic-bezier(.4,0,.2,1);
+  will-change: opacity, filter, transform;
+}
+
+.site-content.visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
+}
