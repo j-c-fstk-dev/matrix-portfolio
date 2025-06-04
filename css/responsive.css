@@ -1,0 +1,234 @@
+/* Responsividade */
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 30px;
+  }
+  
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  section {
+    padding: 80px 0;
+  }
+  
+  .hero-section .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+    margin-bottom: 50px;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+  }
+  
+  .hero-image {
+    margin-left: 0;
+  }
+  
+  .about-content {
+    flex-direction: column;
+  }
+  
+  .about-image {
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 0;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-color: var(--darker-bg);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 99;
+  }
+  
+  .nav-menu.active {
+    left: 0;
+  }
+  
+  .nav-menu ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .nav-menu li {
+    margin: 15px 0;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+  }
+  
+  .projects-grid,
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .footer-links {
+    justify-content: center;
+  }
+  
+  /* Ajustes para efeitos em telas menores */
+  .light-effect {
+    opacity: 0.3;
+  }
+  
+  .glow-button:hover {
+    animation: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .glow-button {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .about-details {
+    grid-template-columns: 1fr;
+  }
+  
+  .testimonial-card {
+    padding: 30px 20px;
+  }
+  
+  .contact-form {
+    padding: 30px 20px;
+  }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .light-effect {
+    display: none;
+  }
+  
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+  :root {
+    --primary: #00ffdd;
+    --secondary: #00aaff;
+    --text-primary: #ffffff;
+    --text-secondary: #ffffff;
+  }
+  
+  .skill-progress,
+  .project-tech span,
+  .service-features li::before {
+    background-color: var(--primary);
+  }
+  
+  input, textarea {
+    border: 2px solid var(--text-primary);
+  }
+}
+
+/* Foco visível para navegação por teclado */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* Tamanho de texto ajustável */
+html {
+  font-size: 100%;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 95%;
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 90%;
+  }
+}
+
+/* Melhorias de contraste */
+.text-secondary {
+  color: var(--text-secondary);
+}

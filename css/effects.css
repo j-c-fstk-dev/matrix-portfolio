@@ -1,0 +1,451 @@
+/* Efeito de Botão com Glow no Hover */
+.glow-button {
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+  border-radius: 4px;
+  will-change: transform, box-shadow;
+}
+
+.glow-button.primary {
+  color: var(--text-primary);
+  background-color: rgba(0, 229, 204, 0.1);
+  border: 1px solid rgba(0, 229, 204, 0.5);
+}
+
+.glow-button.secondary {
+  color: var(--text-primary);
+  background-color: rgba(0, 136, 255, 0.1);
+  border: 1px solid rgba(0, 136, 255, 0.5);
+}
+
+.glow-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.glow-button.primary::before {
+  background: linear-gradient(45deg, rgba(0, 229, 204, 0), rgba(0, 229, 204, 0.3));
+}
+
+.glow-button.secondary::before {
+  background: linear-gradient(45deg, rgba(0, 136, 255, 0), rgba(0, 136, 255, 0.3));
+}
+
+.glow-button:hover {
+  transform: translateY(-2px);
+}
+
+.glow-button.primary:hover {
+  box-shadow: 
+    0 0 5px rgba(0, 229, 204, 0.5),
+    0 0 15px rgba(0, 229, 204, 0.3),
+    0 0 30px rgba(0, 229, 204, 0.2);
+}
+
+.glow-button.secondary:hover {
+  box-shadow: 
+    0 0 5px rgba(0, 136, 255, 0.5),
+    0 0 15px rgba(0, 136, 255, 0.3),
+    0 0 30px rgba(0, 136, 255, 0.2);
+}
+
+.glow-button:hover::before {
+  opacity: 0.8;
+}
+
+/* Efeito de pulsação */
+@keyframes primaryPulse {
+  0% {
+    box-shadow: 
+      0 0 5px rgba(0, 229, 204, 0.5),
+      0 0 15px rgba(0, 229, 204, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 10px rgba(0, 229, 204, 0.7),
+      0 0 25px rgba(0, 229, 204, 0.5),
+      0 0 40px rgba(0, 229, 204, 0.3);
+  }
+  100% {
+    box-shadow: 
+      0 0 5px rgba(0, 229, 204, 0.5),
+      0 0 15px rgba(0, 229, 204, 0.3);
+  }
+}
+
+@keyframes secondaryPulse {
+  0% {
+    box-shadow: 
+      0 0 5px rgba(0, 136, 255, 0.5),
+      0 0 15px rgba(0, 136, 255, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 10px rgba(0, 136, 255, 0.7),
+      0 0 25px rgba(0, 136, 255, 0.5),
+      0 0 40px rgba(0, 136, 255, 0.3);
+  }
+  100% {
+    box-shadow: 
+      0 0 5px rgba(0, 136, 255, 0.5),
+      0 0 15px rgba(0, 136, 255, 0.3);
+  }
+}
+
+.glow-button.primary:hover {
+  animation: primaryPulse 2s infinite;
+}
+
+.glow-button.secondary:hover {
+  animation: secondaryPulse 2s infinite;
+}
+
+/* Efeito de Imagem Revelada no Background */
+.reveal-container {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  background-color: var(--card-bg);
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.reveal-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--text-primary);
+  font-family: 'Space Mono', monospace;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 1px solid rgba(0, 229, 204, 0.2);
+  border-radius: 8px;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.hidden-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/matrix-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+}
+
+/* Efeito de revelação no hover */
+.reveal-area:hover .hidden-image {
+  opacity: 0.8;
+}
+
+.reveal-area:hover {
+  color: var(--matrix-green);
+  text-shadow: 0 0 10px var(--matrix-green);
+  box-shadow: 
+    0 0 15px rgba(0, 229, 204, 0.3),
+    0 0 30px rgba(0, 229, 204, 0.2);
+}
+
+/* Efeito de Luzes Rotativas ao Redor de Elementos */
+.rotating-light-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.rotating-light-container .content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.rotating-light-container .content img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 229, 204, 0.3);
+  box-shadow: 0 0 20px rgba(0, 229, 204, 0.2);
+}
+
+.light-effect {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent,
+    rgba(0, 229, 204, 0),
+    rgba(0, 229, 204, 0.1),
+    rgba(0, 229, 204, 0.2),
+    rgba(0, 136, 255, 0.2),
+    rgba(0, 136, 255, 0.1),
+    rgba(0, 136, 255, 0),
+    transparent
+  );
+  animation: rotate 15s linear infinite;
+  z-index: 1;
+  will-change: transform;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Efeito adicional para destacar o elemento central */
+.rotating-light-container:hover .content img {
+  box-shadow: 
+    0 0 20px rgba(0, 229, 204, 0.5),
+    0 0 40px rgba(0, 136, 255, 0.3);
+  transition: box-shadow 0.5s ease;
+}
+
+/* Efeito Matrix para texto */
+.matrix-text {
+  color: var(--matrix-green);
+  text-shadow: 0 0 5px var(--matrix-green);
+}
+
+/* Efeito de Hover para Cards */
+.skill-category,
+.project-card,
+.service-card,
+.testimonial-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-category::after,
+.project-card::after,
+.service-card::after,
+.testimonial-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 229, 204, 0.1) 0%,
+    rgba(0, 136, 255, 0.05) 30%,
+    transparent 70%
+  );
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+
+.skill-category:hover::after,
+.project-card:hover::after,
+.service-card:hover::after,
+.testimonial-card:hover::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Efeito de Borda Brilhante */
+.glowing-border {
+  position: relative;
+}
+
+.glowing-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  background: var(--gradient-primary);
+  z-index: -1;
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glowing-border:hover::before {
+  opacity: 1;
+}
+
+/* Efeito de Partículas Flutuantes */
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  background-color: rgba(0, 229, 204, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Efeito de Texto Digitando */
+.typing-effect {
+  border-right: 2px solid var(--primary);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--primary) }
+}
+
+/* Efeito de Hover para Links de Navegação */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--gradient-primary);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+  transform: translateX(0);
+}
+
+/* Efeito de Foco para Formulários */
+.form-group input:focus,
+.form-group textarea:focus {
+  animation: formGlow 1.5s infinite alternate;
+}
+
+@keyframes formGlow {
+  from {
+    box-shadow: 0 0 5px rgba(0, 229, 204, 0.3);
+  }
+  to {
+    box-shadow: 0 0 15px rgba(0, 229, 204, 0.5);
+  }
+}
+
+/* Efeito de Scroll Reveal */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Efeito de Hover para Ícones Sociais */
+.social-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.social-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.social-link:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.social-link:hover {
+  color: var(--dark-bg);
+}
+
+/* Efeito de Progresso para Barras de Habilidades */
+@keyframes progressAnimation {
+  from { width: 0; }
+}
+
+.skill-progress {
+  animation: progressAnimation 1.5s ease-out forwards;
+}
+
+/* Media Queries para Responsividade */
+@media (prefers-reduced-motion: reduce) {
+  .light-effect,
+  .glow-button,
+  .reveal-area,
+  .hidden-image,
+  .skill-progress,
+  .typing-effect {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .light-effect {
+    opacity: 0.5;
+  }
+  
+  .glow-button:hover {
+    animation: none;
+  }
+}

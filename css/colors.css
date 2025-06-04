@@ -1,0 +1,37 @@
+:root {
+  /* Cores principais */
+  --dark-bg: #0a0e17;
+  --darker-bg: #060a12;
+  --card-bg: #111a24;
+  
+  /* Cores de destaque */
+  --primary: #00e5cc; /* Verde água */
+  --primary-dark: #00b3a1;
+  --primary-light: #4dfff0;
+  
+  --secondary: #0088ff; /* Azul */
+  --secondary-dark: #0066cc;
+  --secondary-light: #66b3ff;
+  
+  /* Cores de texto */
+  --text-primary: #ffffff;
+  --text-secondary: #b3e0ff;
+  --text-muted: #718096;
+  
+  /* Cores de efeito */
+  --glow-primary: rgba(0, 229, 204, 0.6);
+  --glow-secondary: rgba(0, 136, 255, 0.6);
+  --matrix-green: #00ff41;
+  
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, var(--primary), var(--secondary));
+  --gradient-glow: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+}
+
+/* Classe de utilidade para texto com gradiente */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
